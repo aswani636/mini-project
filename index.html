@@ -22,14 +22,14 @@
                 	<a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
             	</div>
             	<span>or use your email for registeration</span>
-            	<input type="text" placeholder="Name">
-            	<input type="email" placeholder="Email">
-            	<input type="password" placeholder="Password">
+            	<input type="text" placeholder="Name" required>
+            	<input type="email" placeholder="Email" required>
+            	<input type="password" placeholder="Password" required>
                 <button>login</button>
         	</form>
     	</div>
     	<div class="form-container sign-in">
-        	<form>
+        	<form action="/form.html">
             	<h1>Login</h1>
             	<div class="social-icons">
                 	<a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
@@ -38,10 +38,10 @@
                 	<a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
             	</div>
             	<span>or use your email password</span>
-            	<input type="email" placeholder="Email">
-            	<input type="password" placeholder="Password">
+            	<input type="email" placeholder="Email" required>
+            	<input type="password" placeholder="Password" required>
             	<a href="#">Forget Your Password?</a>
-                <button>Login</button>
+                <button type="submit">Login</button>
         	</form>
     	</div>
     	<div class="toggle-container">
@@ -59,8 +59,20 @@
         	</div>
     	</div>
 	</div>
- 
-	<script src="script.js"></script>
+
+<script>
+    const container = document.getElementById('container');
+const registerBtn = document.getElementById('register');
+const loginBtn = document.getElementById('login');
+
+registerBtn.addEventListener('click', () => {
+    container.classList.add("active");
+});
+
+loginBtn.addEventListener('click', () => {
+    container.classList.remove("active");
+});
+</script>
 </body>
  
 </html>
