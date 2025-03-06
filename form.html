@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Supply Survey</title>
+  <style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f9ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0 10px;
+  }
+
+  .form-container {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .form-container h2 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .form-container label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: #555555;
+  }
+
+  .form-container input,
+  .form-container select,
+  .form-container textarea,
+  .form-container button {
+    width: 100%;
+    padding: 12px 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+  }
+
+  .form-container input:focus,
+  .form-container select:focus,
+  .form-container textarea:focus {
+    border-color: #0078d7;
+    box-shadow: 0 0 4px rgba(0, 120, 215, 0.4);
+    outline: none;
+  }
+
+  .form-container button {
+    background-color: #0078d7;
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .form-container button:hover {
+    background-color: #005bb5;
+  }
+
+  .form-container button:active {
+    background-color: #004494;
+  }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Water Supply Survey</h2>
+    <form action="#" method="post">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" required>
+
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="local-body">Local Body</label>
+      <select id="local-body" name="local-body" required>
+        <option value="">-- Select --</option>
+        <option value="panchayat">Panchayat</option>
+        <option value="municipality">Municipality</option>
+        <option value="corporation">Corporation</option>
+      </select>
+
+      <label for="source">Primary Water Source</label>
+      <select id="source" name="source" required>
+        <option value="">-- Select --</option>
+        <option value="tap">Tap Water</option>
+        <option value="well">Well Water</option>
+        <option value="borehole">Borehole</option>
+        <option value="river">River/Stream</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="bill">Average Monthly Water Bill (₹):</label>
+      <input type="number" id="bill" name="bill" required>
+
+      <label for="alt-source">Do you use any alternative water sources?</label>
+      <select id="alt-source" name="alt-source" required>
+        <option value="">-- Select --</option>
+        <option value="no">No</option>
+        <option value="rainwater">Rainwater Harvesting</option>
+        <option value="bottled">Bottled Water</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="storage">How do you store water at home?</label>
+      <select id="storage" name="storage" required>
+        <option value="">-- Select --</option>
+        <option value="tank">Overhead Tank</option>
+        <option value="container">Plastic Containers</option>
+        <option value="clay">Clay Pots</option>
+        <option value="direct">Use Directly</option>
+      </select>
+
+      <label for="filter">Do you use any filtration methods?</label>
+      <select id="filter" name="filter" required>
+        <option value="">-- Select --</option>
+        <option value="none">No Filtration</option>
+        <option value="boiling">Boiling</option>
+        <option value="filter">Water Filter</option>
+        <option value="ro">RO Purifier</option>
+      </select>
+
+      <label for="scarcity">How many months do you face water scarcity?</label>
+      <input type="number" id="scarcity" name="scarcity" required>
+
+      <label for="satisfaction">Are you satisfied with the government water supply?</label>
+      <select id="satisfaction" name="satisfaction" required>
+        <option value="">-- Select --</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        <option value="neutral">Neutral</option>
+      </select>
+
+      <label for="suggestions">Do you have any suggestions for improving water supply?</label>
+      <textarea id="suggestions" name="suggestions" rows="3"></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
