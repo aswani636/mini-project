@@ -3,13 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank yout</title>
+    <title>Thank You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100hvp;
+            text-align: center;
+            flex:content;
+            color: rgb(33, 60, 159);
+        }
+        .logo {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: white;
+            color: #c2c3c6;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        .logo:hover {
+            background: #0a356d;
+            color: rgb(87, 80, 128);
+            transform: scale(1.1);
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        h1, h2 {
+            margin: 25px 0;
+        }
+    </style>
 </head>
 <body>
-    <a href="form.html" class="logo">Go back</a>
-
-
-    <h1>Thank you</h1>
-    <h1>Form submitted successfully</h1>
+    <div class="container">
+        <h1>Thank You</h1>
+        <h2>Form submitted successfully</h2>
+        <a href="welcome.html" class="logo">Go back</a>
+    </div>
 </body>
 </html>
