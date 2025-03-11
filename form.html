@@ -53,15 +53,13 @@
     background-color: #f9f9f9;
   }
 
-  .form-container input:focus,
-  .form-container select:focus,
-  .form-container textarea:focus {
-    border-color: #0078d7;
-    box-shadow: 0 0 4px rgba(0, 120, 215, 0.4);
-    outline: none;
+  .form-container .button-group {
+    display: flex;
+    justify-content: space-between;
   }
 
   .form-container button {
+    flex: 1;
     background-color: #0078d7;
     color: #ffffff;
     border: none;
@@ -69,6 +67,7 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 5px;
   }
 
   .form-container button:hover {
@@ -78,6 +77,22 @@
   .form-container button:active {
     background-color: #004494;
   }
+
+  .clear-btn {
+    background-color: #f39c12;
+  }
+
+  .clear-btn:hover {
+    background-color: #d68910;
+  }
+
+  .back-btn {
+    background-color: #e74c3c;
+  }
+
+  .back-btn:hover {
+    background-color: #c0392b;
+  }
   </style>
 </head>
 <body>
@@ -85,78 +100,92 @@
   <div class="form-container">
     <h2>Water Supply Survey</h2>
     <form action="success.html">
-      <label for="name">Full Name</label>
+      <label for="name">Full Name / പൂർണ്ണ നാമം</label>
       <input type="text" id="name" name="name" required>
 
-      <label for="age">Age</label>
+      <label for="dob">Date of Birth / ജനന തിയതി</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label for="age">Age / പ്രായം</label>
       <input type="number" id="age" name="age" required>
 
-      <label for="address">Address</label>
+      <label for="state">State / സംസ്ഥാനം</label>
+      <select id="state" name="state" required>
+        <option value="">-- Select / തിരഞ്ഞെടുക്കുക --</option>
+        <option value="kerala">Kerala / കേരളം</option>
+        <option value="tamilnadu">Tamil Nadu / തമിഴ്‌നാട്</option>
+        <option value="karnataka">Karnataka / കര്‍ണാടക</option>
+        <option value="andhra">Andhra Pradesh / ആന്ധ്ര പ്രദേശ്</option>
+      </select>
+
+      <label for="district">District / ജില്ല</label>
+      <input type="text" id="district" name="district" required>
+
+      <label for="address">Address / വിലാസം</label>
       <input type="text" id="address" name="address" required>
 
-      <label for="local-body">Local Body</label>
-      <select id="local-body" name="local-body" required>
-        <option value="">-- Select --</option>
-        <option value="panchayat">Panchayat</option>
-        <option value="municipality">Municipality</option>
-        <option value="corporation">Corporation</option>
+      <label for="phone">Phone Number / ഫോൺ നമ്പർ</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required placeholder="Enter 10-digit number">
+
+      <label for="aadhar">Aadhar Number / ആധാർ നമ്പർ</label>
+      <input type="text" id="aadhar" name="aadhar" pattern="[0-9]{12}" required placeholder="Enter 12-digit Aadhar number">
+
+      <label for="local-body">Local Body / പ്രാദേശിക ഭരണസംവിധാനം</label>
+      <select id="local-body" name="local-body" required onchange="toggleFields()">
+        <option value="">-- Select / തിരഞ്ഞെടുക്കുക --</option>
+        <option value="panchayat">Panchayat / പഞ്ചായത്ത്</option>
+        <option value="municipality">Municipality / മുനിസിപ്പാലിറ്റി</option>
+        <option value="corporation">Corporation / കോർപ്പറേഷൻ</option>
       </select>
 
-      <label for="source">Primary Water Source</label>
+      <div id="ward-field" style="display: none;">
+        <label for="ward-no">Ward Number / വാർഡ് നമ്പർ</label>
+        <input type="number" id="ward-no" name="ward-no">
+      </div>
+
+      <div id="apartment-field" style="display: none;">
+        <label for="apartment-no">Apartment Number / അപ്പാർട്ട്മെന്റ് നമ്പർ</label>
+        <input type="text" id="apartment-no" name="apartment-no">
+      </div>
+
+      <label for="source">Primary Water Source / പ്രാഥമിക ജല ഉറവിടം</label>
       <select id="source" name="source" required>
-        <option value="">-- Select --</option>
-        <option value="tap">Tap Water</option>
-        <option value="well">Well Water</option>
-        <option value="borehole">Borehole</option>
-        <option value="river">River/Stream</option>
-        <option value="other">Other</option>
+        <option value="">-- Select / തിരഞ്ഞെടുക്കുക --</option>
+        <option value="tap">Tap Water / കുഴൽജലം</option>
+        <option value="well">Well Water / കിണർ ജലം</option>
+        <option value="borehole">Borehole / ബോർഹോൾ</option>
+        <option value="river">River/Stream / നദി/അരുവി</option>
+        <option value="other">Other / മറ്റ്</option>
       </select>
 
-      <label for="bill">Average Monthly Water Bill (₹):</label>
+      <label for="bill">Average Monthly Water Bill (₹) / ശരാശരി മാസ ജല ബിൽ (₹)</label>
       <input type="number" id="bill" name="bill" required>
 
-      <label for="alt-source">Do you use any alternative water sources?</label>
-      <select id="alt-source" name="alt-source" required>
-        <option value="">-- Select --</option>
-        <option value="no">No</option>
-        <option value="rainwater">Rainwater Harvesting</option>
-        <option value="bottled">Bottled Water</option>
-        <option value="other">Other</option>
-      </select>
-
-      <label for="storage">How do you store water at home?</label>
-      <select id="storage" name="storage" required>
-        <option value="">-- Select --</option>
-        <option value="tank">Overhead Tank</option>
-        <option value="container">Plastic Containers</option>
-        <option value="clay">Clay Pots</option>
-        <option value="direct">Use Directly</option>
-      </select>
-
-      <label for="filter">Do you use any filtration methods?</label>
-      <select id="filter" name="filter" required>
-        <option value="">-- Select --</option>
-        <option value="none">No Filtration</option>
-        <option value="boiling">Boiling</option>
-        <option value="filter">Water Filter</option>
-        <option value="ro">RO Purifier</option>
-      </select>
-
-      <label for="scarcity">How many months do you face water scarcity?</label>
-      <input type="number" id="scarcity" name="scarcity" required>
-
-      <label for="satisfaction">Are you satisfied with the government water supply?</label>
-      <select id="satisfaction" name="satisfaction" required>
-        <option value="">-- Select --</option>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-        <option value="neutral">Neutral</option>
-      </select>
-
-      <label for="suggestions">Do you have any suggestions for improving water supply?</label>
+      <label for="suggestions">Suggestions for improvement /മെച്ചപ്പെടുത്താൻ നിർദേശങ്ങൾ</label>
       <textarea id="suggestions" name="suggestions" rows="3"></textarea>
 
-      <button type="submit">Submit</button>
+      <div class="button-group">
+        <button type="submit">Submit </button>
+        <button type="button" class="clear-btn" onclick="clearForm()">Clear</button>
+        <button type="button" class="back-btn" onclick="window.history.back()">Back</button>
+      </div>
+
+      <script>
+        function clearForm() {
+          document.querySelector("form").reset();
+          toggleFields(); // Reset hidden fields when clearing
+        }
+
+        function toggleFields() {
+          let localBody = document.getElementById("local-body").value;
+          let wardField = document.getElementById("ward-field");
+          let apartmentField = document.getElementById("apartment-field");
+
+          wardField.style.display = (localBody === "panchayat" || localBody === "municipality" || localBody === "corporation") ? "block" : "none";
+          apartmentField.style.display = (localBody === "corporation") ? "block" : "none";
+        }
+      </script>
+
     </form>
   </div>
 </body>
